@@ -3,7 +3,6 @@ class SocialNetwork:
     def __init__(self):
         pass
 
-
     def sign_up(self, username, password):
         pass
 

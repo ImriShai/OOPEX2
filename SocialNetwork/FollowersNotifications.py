@@ -1,14 +1,14 @@
-class FollowersNotifications():
+class FollowersNotifications:
 
     def __init__(self):
-        pass
+        self.userFollowers = {}
 
+    def subscribe(self, user, follower):
+        self.userFollowers[user].add(follower)
 
-    def subscribe(self, user):
-        pass
+    def unsubscribe(self, user, follower):
+        self.userFollowers[user].remove(follower)
 
-    def unsubscribe(self, user):
-        pass
-
-    def notify(self):
-        pass
+    def notify(self, user):
+        for follower in self.userFollowers[user]:
+            follower.notify()
