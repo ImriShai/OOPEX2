@@ -17,9 +17,9 @@ class SocialNetwork:
         return result
 
     @staticmethod
-    def get_instance():
+    def get_instance(name):
         if SocialNetwork.__instance is None:
-            SocialNetwork.__instance = SocialNetwork()
+            SocialNetwork.__instance = SocialNetwork(name)
             return SocialNetwork.__instance
         return SocialNetwork.__instance
 
