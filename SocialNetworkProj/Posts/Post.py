@@ -1,5 +1,9 @@
-class Post:
+from abc import ABC, abstractmethod
 
+
+class Post(ABC):
+
+    @abstractmethod
     def __init__(self, owner):
         self._owner = owner
 
