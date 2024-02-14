@@ -13,7 +13,7 @@ class SocialNetwork:
     def __str__(self):
         result = f"{self.name} social network:\n"
         for user in self.users:
-            result += f"{user.__str__()}\n"
+            result += f"{self.users.get(user)}\n"
         return result
 
     @staticmethod

@@ -1,6 +1,7 @@
 from SocialNetworkProj.Posts.Post import Post
 
 
+
 class TextPost(Post):
 
     def __init__(self, owner, text):
@@ -8,4 +9,4 @@ class TextPost(Post):
         self.text = text
 
     def __str__(self):
-        return f"{self.get_owner()} published a post:\n\"{self.text}\""
+        return f"{self.get_owner().get_username()} published a post:\n\"{self.text}\"\n"

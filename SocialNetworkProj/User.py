@@ -73,5 +73,5 @@ class User:
         self.__notifications.append(notification)
 
     def __str__(self):
-
-        return (f"User name: {self.__username}, Number of posts: {self.__numPosts}, Number of followers: {self.__numFollowers}")
+        res = f"User name: {self.__username}, Number of posts: {self.__numPosts}, Number of followers: {self.__numFollowers}"
+        return res
