@@ -1,4 +1,4 @@
-from SocialNetworkProj.SocialNetwork import SocialNetwork
+from SocialNetwork import SocialNetwork
 
 
 def main():
@@ -66,7 +66,7 @@ def main():
     print(p3)
 
     # Displaying the image of the post
- #   p2.display() TODO
+    p2.display()
     print()
 
     p2.comment(u5, "Amazing picture!")

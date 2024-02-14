@@ -59,6 +59,7 @@ class User:
             raise Exception("User must be online!")
         self.__numPosts += 1
         post = PostFactory.create_post(post_type, self, args)
+        self.__followerNotifications.notify(self)
         print(post)
         return post
 

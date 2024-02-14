@@ -5,6 +5,8 @@ class SocialNetwork:
     __instance = None
 
     def __init__(self, name):
+        if self.__instance is not None:
+            raise Exception("Can only create one social network")
         self.passwords = {}
         self.users = {}
         self.name = name
@@ -35,6 +37,8 @@ class SocialNetwork:
     def log_in(self, username, password):
         if self.passwords[username] == password:
             self.users[username].set_online(True)
+            print(f"{username} connected")
 
     def log_out(self, username):
         self.users[username].set_online(False)
+        print(f"{username} disconnected")

@@ -21,4 +21,4 @@ class FollowersNotifications:
 
     def notify(self, user):
         for follower in self.userFollowers[user]:
-            follower.notify()
+            follower.update_notifications(f"{user.get_username()} has a new post")

@@ -1,5 +1,6 @@
 from SocialNetworkProj.Posts.Post import Post
-import matplotlib.pyplot as plt
+from matplotlib import image as img, pyplot as plt
+
 
 
 class ImagePost(Post):
@@ -9,7 +10,10 @@ class ImagePost(Post):
         self.__image = image
 
     def display(self):
-        plt.imshow(self.__image)
+        image = img.imread(self.__image)
+        plt.imshow(image)
+        plt.show()
+        print("Shows picture")
 
     def __str__(self):
         return f"{self.get_owner().get_username()} posted a picture\n"
