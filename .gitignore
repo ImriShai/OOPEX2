@@ -1,8 +1,10 @@
 .venv
 /Assignment 2 - Design patterns.pdf
-/auto_check.py
-/output.txt
-.idea
-/SocialNetworkProj/output.txt
-/SocialNetworkProj/image1.jpg
 /SocialNetworkProj/auto_check.py
+/SocialNetworkProj/output.txt
+.idea
+/SocialNetworkProj/image1.jpg
+/auto_check.py
+/image1.jpg
+/output.txt
+/student_output.txt

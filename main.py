@@ -1,4 +1,4 @@
-from SocialNetwork import SocialNetwork
+from SocialNetworkProj.SocialNetwork import SocialNetwork
 
 
 def main():
