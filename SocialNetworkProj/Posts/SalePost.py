@@ -18,12 +18,18 @@ class SalePost(Post):
 
     # Declares the product as sold
     def sold(self, password):
-        if self._owner.get_password() == password and self.__available:  # TODO what happens else
-            self.__available = False
-            print(f"{self._owner.get_username()}'s product is sold")
+        if self._owner.get_password() != password:
+            raise Exception("Wrong password")
+        if not self.__available:
+            raise Exception("Product already sold")
+        self.__available = False
+        print(f"{self._owner.get_username()}'s product is sold")
 
     # Gives a discount on the product
     def discount(self, discount, password):
-        if self._owner.get_password() == password and self.__available:  # TODO what happens else
-            self.__price *= (1 - (discount / 100))
-            print(f"Discount on {self._owner.get_username()} product! the new price is: {self.__price}")
+        if self._owner.get_password() != password:
+            raise Exception("Wrong password")
+        if not self.__available:
+            raise Exception("Product already sold")
+        self.__price *= (1 - (discount / 100))
+        print(f"Discount on {self._owner.get_username()} product! the new price is: {self.__price}")

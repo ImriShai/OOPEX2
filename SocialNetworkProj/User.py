@@ -15,6 +15,10 @@ class User:
         self.__followerNotifications = FollowersNotifications.get_instance()
 
     def set_online(self, status):
+        if status == self.__online:
+            if status:
+                raise Exception(f"{self.__username} is already online")
+            raise Exception(f"{self.__username} is already offline")
         self.__online = status
 
     def get_username(self):

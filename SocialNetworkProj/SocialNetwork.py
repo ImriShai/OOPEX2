@@ -30,16 +30,17 @@ class SocialNetwork:
     def sign_up(self, username, password):
         if username in self.__users:
             raise Exception("Username already exist!")
-        if 4 > len(password) or len(password) > 8:  # TODO check if we need to include 4 and 8
+        if 4 > len(password) or len(password) > 8:
             raise Exception("Password doesn't meet the requirements")
         self.__users[username] = User(username, password)
         return self.__users[username]
 
     def log_in(self, username, password):
-        if self.__users[username].get_password() == password:  # TODO what happens when wrong password
-            self.__users[username].set_online(True)  # TODO what happens when already logged in
-            print(f"{username} connected")
+        if self.__users[username].get_password() != password:
+            raise Exception("Wrong password")
+        self.__users[username].set_online(True)
+        print(f"{username} connected")
 
     def log_out(self, username):
-        self.__users[username].set_online(False)  # TODO what happens when already logged out
+        self.__users[username].set_online(False)
         print(f"{username} disconnected")

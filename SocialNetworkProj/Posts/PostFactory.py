@@ -5,7 +5,7 @@ from SocialNetworkProj.Posts.SalePost import SalePost
 """ This class follows the factory design pattern in order to construct posts of different types. """
 
 
-class PostFactory:  # TODO maybe static
+class PostFactory:
 
     @staticmethod
     def create_post(post_type, owner, args):

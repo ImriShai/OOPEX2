@@ -10,7 +10,7 @@ class ImagePost(Post):
 
     # Displays the image on screen
     def display(self):
-        image = img.imread(self.__image)  # TODO maybe add a try catch
+        image = img.imread(self.__image)
         plt.imshow(image)
         plt.show()
         print("Shows picture")
