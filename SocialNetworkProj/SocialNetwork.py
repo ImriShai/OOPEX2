@@ -1,5 +1,7 @@
 from SocialNetworkProj.User import User
 
+""" This class follows the singleton design pattern and manages the network's users and their online status """
+
 
 class SocialNetwork:
     __instance = None
@@ -7,15 +9,14 @@ class SocialNetwork:
     def __init__(self, name):
         if self.__instance is not None:
             raise Exception("Can only create one social network")
-        self.passwords = {}
-        self.users = {}
-        self.name = name
-        print(f"The social network {self.name} was created!")
+        self.__users = {}  # maps a username to the actual user instance
+        self.__name = name
+        print(f"The social network {self.__name} was created!")
 
     def __str__(self):
-        result = f"{self.name} social network:\n"
-        for user in self.users:
-            result += f"{self.users.get(user)}\n"
+        result = f"{self.__name} social network:\n"
+        for user in self.__users:
+            result += f"{self.__users.get(user)}\n"
         return result
 
     @staticmethod
@@ -25,20 +26,20 @@ class SocialNetwork:
             return SocialNetwork.__instance
         return SocialNetwork.__instance
 
+    # Signs up a new user to the network and returns an instance of the new user.
     def sign_up(self, username, password):
-        if username in self.passwords:
+        if username in self.__users:
             raise Exception("Username already exist!")
-        if 4 > len(password) or len(password) > 8:
+        if 4 > len(password) or len(password) > 8:  # TODO check if we need to include 4 and 8
             raise Exception("Password doesn't meet the requirements")
-        self.passwords[username] = password
-        self.users[username] = User(username, password)
-        return self.users[username]
+        self.__users[username] = User(username, password)
+        return self.__users[username]
 
     def log_in(self, username, password):
-        if self.passwords[username] == password:
-            self.users[username].set_online(True)
+        if self.__users[username].get_password() == password:  # TODO what happens when wrong password
+            self.__users[username].set_online(True)  # TODO what happens when already logged in
             print(f"{username} connected")
 
     def log_out(self, username):
-        self.users[username].set_online(False)
+        self.__users[username].set_online(False)  # TODO what happens when already logged out
         print(f"{username} disconnected")

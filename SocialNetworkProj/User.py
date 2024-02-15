@@ -5,17 +5,14 @@ from SocialNetworkProj.Posts.PostFactory import PostFactory
 class User:
 
     def __init__(self, username, password):
-        self.__online = True
+        self.__online = True  # True iff the user is logged in
         self.__username = username
         self.__password = password
         self.__numPosts = 0
         self.__numFollowers = 0
-        self.__following = []
+        self.__following = []  # A list of users this user is following
         self.__notifications = []
         self.__followerNotifications = FollowersNotifications.get_instance()
-
-    def get_online(self):
-        return self.__online
 
     def set_online(self, status):
         self.__online = status
@@ -47,11 +44,11 @@ class User:
     def unfollow(self, user):
         if not self.__online:
             raise Exception("User must be online!")
-        if  user not in self.__following:
+        if user not in self.__following:
             raise Exception("In order to unfollow you must follow first!")
         self.__following.remove(user)
-        self.__followerNotifications.unsubscribe(user, self)
         user.__remove_follower()
+        self.__followerNotifications.unsubscribe(user, self)
         print(f"{self.__username} unfollowed {user.get_username()}")
 
     def publish_post(self, post_type, *args):
@@ -70,6 +67,7 @@ class User:
         for notification in self.__notifications:
             print(notification)
 
+    # add a new notification to the notifications list
     def update_notifications(self, notification):
         self.__notifications.append(notification)
 

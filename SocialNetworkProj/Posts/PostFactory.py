@@ -2,18 +2,10 @@ from SocialNetworkProj.Posts.TextPost import TextPost
 from SocialNetworkProj.Posts.ImagePost import ImagePost
 from SocialNetworkProj.Posts.SalePost import SalePost
 
+""" This class follows the factory design pattern in order to construct posts of different types. """
 
-class PostFactory: # maybe static
-    # __instance = None
-    #
-    # def __init__(self):
-    #     pass
-    #
-    # @staticmethod
-    # def get_instance():
-    #     if PostFactory is None:
-    #         PostFactory.__instance = PostFactory()
-    #     return PostFactory.__instance
+
+class PostFactory:  # TODO maybe static
 
     @staticmethod
     def create_post(post_type, owner, args):
@@ -23,4 +15,4 @@ class PostFactory: # maybe static
             return ImagePost(owner, *args)
         if post_type == "Sale":
             return SalePost(owner, *args)
-        return None
+        raise Exception(f"Post type: {post_type} is not a supported post type")

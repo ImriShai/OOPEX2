@@ -16,12 +16,14 @@ class SalePost(Post):
             return start+f"For sale! {self.__product_name}, price: {self.__price:}, pickup from: {self.__location}\n"
         return start+f"Sold! {self.__product_name}, price: {self.__price:}, pickup from: {self.__location}\n"
 
+    # Declares the product as sold
     def sold(self, password):
-        if self._owner.get_password() == password and self.__available:
+        if self._owner.get_password() == password and self.__available:  # TODO what happens else
             self.__available = False
             print(f"{self._owner.get_username()}'s product is sold")
 
+    # Gives a discount on the product
     def discount(self, discount, password):
-        if self._owner.get_password() == password and self.__available:
+        if self._owner.get_password() == password and self.__available:  # TODO what happens else
             self.__price *= (1 - (discount / 100))
             print(f"Discount on {self._owner.get_username()} product! the new price is: {self.__price}")
